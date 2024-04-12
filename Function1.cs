@@ -14,7 +14,7 @@ namespace AzureFunctions
     {
         [FunctionName("Function1")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get",  Route = "callFunction")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get",  Route = "callFunction/{id}")] HttpRequest req,string id,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -27,7 +27,7 @@ namespace AzureFunctions
 
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+                : $"Hello, {name}. This HTTP triggered function executed successfully.{id}";
 
             return new OkObjectResult(responseMessage);
         }
