@@ -14,7 +14,7 @@ namespace AzureFunctions
     {
         [FunctionName("Function1")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get",  Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get",  Route = "callFunction")] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
